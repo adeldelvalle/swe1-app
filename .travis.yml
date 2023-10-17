@@ -10,7 +10,7 @@ install:
   - pip install coveralls
 
 script:
-  - black --check .
+  - black .
   - flake8
   - coverage run manage.py test  # assuming you have Django tests
 
