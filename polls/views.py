@@ -1,16 +1,12 @@
-from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 # Create your views here.
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 
-from .models import Question
+from .models import Question, Choice
 from django.views import generic
-from django.urls import reverse
 
-
-from django.template import loader
 
 
 class IndexView(generic.ListView):
