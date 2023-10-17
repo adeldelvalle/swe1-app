@@ -22,9 +22,9 @@ dist: bionic
 deploy:
   provider: elasticbeanstalk
   region: "us-west-2"  # for example: "us-west-2"
-  app: "ebdjango"
+  app: "django-tutorial"
   env: "django-env"
-  bucket_name: "django-tutorial"
+  bucket_name: "elasticbeanstalk-us-west-2-669592337256"
   bucket_path: "django-tutorial"
   on:
     branch: main
