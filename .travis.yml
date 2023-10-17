@@ -1,0 +1,42 @@
+language: python
+python:
+  - "3.11.2"  # you can specify other python versions if needed
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database travisci;' -U postgres
+
+install:
+  - pip install -r requirements.txt
+  - pip install black
+  - pip install flake8
+  - pip install coverage
+  - pip install coveralls
+
+script:
+  - black --check .
+  - flake8
+  - coverage run manage.py test  # assuming you have Django tests
+
+after_success:
+  - coveralls
+
+deploy:
+  provider: elasticbeanstalk
+  region: "your-aws-region"  # for example: "us-west-2"
+  app: "ebdjango"
+  env: "django-env"
+  bucket_name: "django-tutorial"
+  bucket_path: "django-tutorial"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+
