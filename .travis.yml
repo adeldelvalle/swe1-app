@@ -1,6 +1,6 @@
 language: python
 python:
-  - "3.11.2"  # you can specify other python versions if needed
+  - "3.9.0"  # you can specify other python versions if needed
 
 install:
   - pip install -r requirements.txt
